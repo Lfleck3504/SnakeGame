@@ -2,21 +2,29 @@ import "./App.css";
 import { useEffect } from "react";
 import Display from "./ConsoleDisplay";
 import display from "./display";
-import Car from "./Car";
-// import Duck from "./Duck";
+import React from "react";
+import Snake from "./Snake";
 
 export default function App() {
   useEffect(() => {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
+    const snake1 = new Snake();
+    console.log(`Initial Position:` {snake1.position}); // Expected: 0
+
+    snake1.move(5);
+    console.log(`After moving 5:` {snake1.position}); // Expected: 5
+
+    snake1.turn();
+    snake1.move(3);
+    console.log(`After turning and moving 3: `{snake1.position}); // Expected: 2
+
+    snake1.turn();
+    snake1.move(2);
+    console.log(`After turning and moving 2:` {snake1.position}); // Expected: 4>
+    ;
+
     display("hey");
-const redCar = new Car('red');
-const blueCar = new Car('blue');
-redCar.drive(40);
-blueCar.drive(36);
-redCar.drive(2);
-display("Red car drove a total of:", redCar.totalMiles, "miles");
-display("Blue car drove a total of:", blueCar.totalMiles, "miles");
   }, []);
   return (
     <div className="App">
@@ -26,3 +34,8 @@ display("Blue car drove a total of:", blueCar.totalMiles, "miles");
     </div>
   );
 }
+
+
+
+
+export default App;

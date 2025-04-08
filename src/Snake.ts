@@ -2,6 +2,46 @@
 
 // place your code on line 5 above the export statement below
 
-class Snake {}
+class Snake {
+    private currentPosition: number;
+    private currentDirection: number;
+  
+    constructor() {
+      this.currentDirection = 0;
+      this.currentPosition = 1;
+    }
+    public move(distance:number)
+    {
+      if (this.currentDirection === 1) {
+     
+        this.currentPosition += distance
+      } else 
+      {
+      this.currentPosition -= distance
 
-export default Snake;
+
+       }
+
+
+
+    }
+
+
+    /**
+     * turn
+     */
+    public turn() {
+      if (this.currentDirection == 1) {
+     
+        this.currentDirection = -1
+      } else 
+      {
+        this.currentDirection = 1
+      }
+  }
+  get position(){
+    return this.currentPosition
+  }
+}
+  export default Snake;
+  
