@@ -10,18 +10,18 @@ export default function App() {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
     const snake1 = new Snake();
-    console.log(`Initial Position:` {snake1.position}); // Expected: 0
+    console.log("Initial Position:" ,snake1.position); // Expected: 0
 
     snake1.move(5);
-    console.log(`After moving 5:` {snake1.position}); // Expected: 5
+    console.log("After moving 5:", snake1.position); // Expected: 5
 
     snake1.turn();
     snake1.move(3);
-    console.log(`After turning and moving 3: `{snake1.position}); // Expected: 2
+    console.log("After turning and moving 3:",snake1.position); // Expected: 2
 
     snake1.turn();
     snake1.move(2);
-    console.log(`After turning and moving 2:` {snake1.position}); // Expected: 4>
+    console.log("After turning and moving 2:", snake1.position); // Expected: 4>
     ;
 
     display("hey");
@@ -36,6 +36,3 @@ export default function App() {
 }
 
 
-
-
-export default App;
