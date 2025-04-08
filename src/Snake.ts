@@ -7,8 +7,8 @@ class Snake {
     private currentDirection: number;
   
     constructor() {
-      this.currentDirection = 0;
-      this.currentPosition = 1;
+      this.currentDirection = 1;
+      this.currentPosition = 0;
     }
     public move(distance:number)
     {
