@@ -1,7 +1,7 @@
 // import display from "./display";
 
 // place your code on line 5 above the export statement below
-
+import Point from "./Point";
 
   type Direction = "up" | "down" | "left" | "right";
 
@@ -64,24 +64,6 @@
       }
     }
 
-      /**
-     * turn
-     */
-       /**
-     * @deprecated Use {turnLeft() or turnRight()} instead.
-     */ 
-    
-      /**
-      public turn() {
-      if (this.currentDirection == 1) {
-     
-        this.currentDirection = -1
-      } else 
-      {
-        this.currentDirection = 1
-      }
-  }
-  */
 
   
   get position(){

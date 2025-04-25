@@ -4,27 +4,26 @@ import Display from "./ConsoleDisplay";
 import display from "./display";
 import React from "react";
 import Snake from "./Snake";
+import Point from "./Point";
+import "./Point";
 
 export default function App() {
   useEffect(() => {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
     const snake1 = new Snake();
-    console.log(`Initial Position:` ,{snake1.position}); // Expected: 0
+    console.log(`Initial Point: (${snake1.position.x}, ${snake1.position.y})`);
 
-    snake1.move(5);
-    console.log(`After moving 5:` ,{snake1.position}); // Expected: 5
-
-    snake1.turn();
-    snake1.move(3);
-    console.log(`After turning and moving 3: `,{snake1.position}); // Expected: 2
-
-    snake1.turn();
-    snake1.move(2);
-    console.log(`After turning and moving 2:` ,{snake1.position}); // Expected: 4>
-    ;
-
-    display("hey");
+    snake1.move();
+    console.log(`After 1 move: (${snake1.position.x}, ${snake1.position.y})`);
+    
+    snake1.turnLeft(); 
+    snake1.move();
+    console.log(`After turn and move: (${snake1.position.x}, ${snake1.position.y})`);
+    
+    snake1.turnLeft();
+    snake1.move();
+    console.log(`After another turn and move: (${snake1.position.x}, ${snake1.position.y})`);
   }, []);
   return (
     <div className="App">
@@ -35,7 +34,3 @@ export default function App() {
   );
 }
 
-
-
-
-export default App;
