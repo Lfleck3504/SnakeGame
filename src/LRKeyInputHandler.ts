@@ -15,18 +15,18 @@ export class LRKeyInputHandler implements IInputHandler {
   }
 
   madeLeftMove(): boolean {
-    return this.wasLeftArrowPushed;
+    return this.wasLeftArrowPushed;//  "left arrow" key press
   }
 
   madeRightMove(): boolean {
-    return this.wasRightArrowPushed;
+    return this.wasRightArrowPushed;//  "right arrow" key press
   }
 
   resetLeftMove(): void {
-    this.wasLeftArrowPushed = false;
+    this.wasLeftArrowPushed = false;//  "left arrow" key press ending
   }
 
   resetRightMove(): void {
-    this.wasRightArrowPushed = false;
+    this.wasRightArrowPushed = false;// "right arrow" key press ending
   }
 }
