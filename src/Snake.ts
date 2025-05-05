@@ -5,22 +5,32 @@ import Point from "./Point";
 
   type Direction = "up" | "down" | "left" | "right";
 
-  class Snake {
-    
-    private currentPosition: Point;
-    private currentDirection: Direction;
-    
-    
-    constructor() {
-      this.currentPosition = new Point(0, 0);
-      this.currentDirection = "right";
-    }
+   
+export default class Snake {
   
+  private parts: Point[];
+  private currentPosition: Point;
+  private currentDirection: Direction;
+  
+  constructor(startPosition: Point, size: number) {
+    this.currentPosition = new Point(0, 0);
+    this.currentDirection = "right";
+    this.parts = [startPosition];
 
-  
-    get Direction(): Direction {
-      return this.currentDirection;
+    for (let i = 1; i < size; i++) {
+      this.parts.push(new Point(startPosition.x - i, startPosition.y));
     }
+  }
+  get Direction(): Direction {
+    return this.currentDirection;
+  }
+  get position(): Point {
+    return this.parts[0];
+  }
+
+  get allParts(): Point[] {
+    return this.parts;
+  }
   
     public turnLeft(): void {
       if (this.currentDirection === "up") {
@@ -49,27 +59,41 @@ import Point from "./Point";
 
     
   
-    public move(): void {
-      const x = this.currentPosition.x;
-      const y = this.currentPosition.y;
-  
-      if (this.currentDirection === "up") {
-        this.currentPosition = new Point(x, y - 1);
-      } else if (this.currentDirection === "down") {
-        this.currentPosition = new Point(x, y + 1);
-      } else if (this.currentDirection === "left") {
-        this.currentPosition = new Point(x - 1, y);
-      } else if (this.currentDirection === "right") {
-        this.currentPosition = new Point(x + 1, y);
+    move(): void {
+      for (let i = this.parts.length - 1; i > 0; i--) {
+        this.parts[i] = this.parts[i - 1];
       }
-    }
-
-
+     
+    const head = this.parts[0];
+    let newHead: Point;
   
-  get position(){
-    return this.currentPosition
+      switch (this.currentDirection) {
+        case "up":
+          newHead = new Point(head.x, head.y - 1);
+          break;
+        case "down":
+          newHead = new Point(head.x, head.y + 1);
+          break;
+        case "left":
+          newHead = new Point(head.x - 1, head.y);
+          break;
+        case "right":
+        default:
+          newHead = new Point(head.x + 1, head.y);
+      }
+  
+      this.parts[0] = newHead;
+    }
+  
+    didCollide(other: Snake): boolean {
+      return other
+        .allParts
+        .some((part, idx) =>
+          idx === 0 ? false : this.position.equals(part)
+        );
+    }
   }
-}
 
-  export default Snake;
+
+
   

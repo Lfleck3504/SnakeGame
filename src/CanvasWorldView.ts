@@ -1,5 +1,6 @@
 import { IWorldView } from "./IWorldView";
 import WorldModel from "./WorldModel";
+import Point from "./Point";
 
 export default class CanvasWorldView implements IWorldView {
   private scalingFactor: number;
@@ -17,14 +18,19 @@ export default class CanvasWorldView implements IWorldView {
     this.worldCanvas.width = world.width * this.scalingFactor;
     this.worldCanvas.height = world.height * this.scalingFactor;
 
-    // Clear the canvas
-    this.context.clearRect(0, 0, this.worldCanvas.width, this.worldCanvas.height);
+    this.context.fillStyle = "black";
+    this.context.fillRect(0, 0, this.worldCanvas.width, this.worldCanvas.height);
 
-    const snake = world.snake;
-    const x = snake.position.x * this.scalingFactor;
-    const y = snake.position.y * this.scalingFactor;
-
-    this.context.fillStyle = "green";
-    this.context.fillRect(x, y, this.scalingFactor, this.scalingFactor);
+    this.context.fillStyle = "lime";
+    world.snakes.forEach(snake => {
+      snake.allParts.forEach((part: Point) => {
+        this.context.fillRect(
+          part.x * this.scalingFactor,
+          part.y * this.scalingFactor,
+          this.scalingFactor,
+          this.scalingFactor
+        );
+      });
+    });
   }
 }

@@ -1,10 +1,10 @@
 import Snake from "./Snake";
 import WorldModel from "./WorldModel";
-
+import Point from "./Point";
 describe("WorldModel Tests", () => {
   it("moves snake forward with update", () => {
-    const snake = new Snake();
-    const world = new WorldModel(snake);
+    const snake = new Snake(new Point(5, 5), 3);
+    const world = new WorldModel();
 
     world.update(3); // should move right 3 spaces
     expect(snake.position.x).toBe(3);
@@ -12,8 +12,8 @@ describe("WorldModel Tests", () => {
   });
 
   it("turns the snake and updates", () => {
-    const snake = new Snake();
-    const world = new WorldModel(snake);
+    const snake = new Snake(new Point(5, 5), 3);;
+    const world = new WorldModel();
 
     world.update(2);           // (2,0)
     snake.turnLeft();          // now facing up
@@ -22,6 +22,6 @@ describe("WorldModel Tests", () => {
     
     expect(snake.position.x).toBe(2);
     expect(snake.position.y).toBe(-1);
-    expect(world.snake).toBe(snake) 
+    expect(world.snakes).toBe(snake) 
   });
 });

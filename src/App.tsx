@@ -18,17 +18,25 @@ import  {GameController}  from "./GameController";
 export default function App() {
   useEffect(() => {
     // Include your display statements to test below
-
-
-    const snake1 = new Snake();
-    const snake2 = new Snake();
-    snake2.turnLeft(); // So it doesn't overlap exactly with snake1
-  
-    const model = new WorldModel(snake1, 30, 30);
+    const model = new WorldModel();
+    const world = new WorldModel();
+    const snake1 = new Snake(new Point(5, 5), 3);
+    const snake2 = new Snake(new Point(10, 10), 3);
+    const view = new CanvasWorldView(20);
+    world.addSnake(snake1);
+    world.addSnake(snake2);
+    world.addView(view);
+    world.update(1);
+   
   
     const canvas = new CanvasWorldView(20);
-    model.view = canvas;
-  
+    model.addView(canvas);
+
+
+    setInterval(() => {// Move snakes every 500ms
+      model.update(1);
+    }, 500);
+
     const controller1 = new SnakeController(model, snake1);
     const controller2 = new SnakeController(model, snake2);
   
@@ -44,8 +52,8 @@ export default function App() {
   }, []);
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <h1>Go Snake Go</h1>
+      <h2>Canvas view, I think!</h2>
       <Display />
     </div>
   );
