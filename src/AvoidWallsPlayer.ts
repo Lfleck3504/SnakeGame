@@ -12,9 +12,9 @@ class AvoidWallsPlayer extends Player {
     const w = this.sc.worldWidth;
     const h = this.sc.worldHeight;
 
-    const atLeftWall = pos.x === 0;
+    const atLeftWall = pos.x === 1;
     const atRightWall = pos.x === w - 1;
-    const atTopWall = pos.y === 0;
+    const atTopWall = pos.y === 1;
     const atBottomWall = pos.y === h - 1;
 
     if (dir === "left" && atLeftWall) {

@@ -19,25 +19,21 @@ export default function App() {
   useEffect(() => {
     // Include your display statements to test below
     const model = new WorldModel();
-    const world = new WorldModel();
+
     const snake1 = new Snake(new Point(5, 5), 3);
     const snake2 = new Snake(new Point(10, 10), 3);
     model.addSnake(snake1);
     model.addSnake(snake2);
-    const view = new CanvasWorldView(20);
-    world.addSnake(snake1);
-    world.addSnake(snake2);
-    world.addView(view);
-    world.update(1);
+    const canvas = new CanvasWorldView(20);
+
+
    
   
-    const canvas = new CanvasWorldView(20);
+    
     model.addView(canvas);
 
 
-    setInterval(() => {
-      model.update(1);
-    }, 500);
+
     const controller1 = new SnakeController(model, snake1);
     const controller2 = new SnakeController(model, snake2);
  
