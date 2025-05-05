@@ -22,6 +22,8 @@ export default function App() {
     const world = new WorldModel();
     const snake1 = new Snake(new Point(5, 5), 3);
     const snake2 = new Snake(new Point(10, 10), 3);
+    model.addSnake(snake1);
+    model.addSnake(snake2);
     const view = new CanvasWorldView(20);
     world.addSnake(snake1);
     world.addSnake(snake2);
@@ -33,22 +35,20 @@ export default function App() {
     model.addView(canvas);
 
 
-    setInterval(() => {// Move snakes every 500ms
+    setInterval(() => {
       model.update(1);
     }, 500);
-
     const controller1 = new SnakeController(model, snake1);
     const controller2 = new SnakeController(model, snake2);
-  
+ 
     const inputHandler = new LRKeyInputHandler();
     const humanPlayer = new HumanPlayer(controller1, inputHandler);
     const autoPlayer = new AvoidWallsPlayer(controller2);
-  
+ 
     const game = new GameController(model);
     game.setPlayer1(humanPlayer);
     game.setPlayer2(autoPlayer);
     game.run();
-
   }, []);
   return (
     <div className="App">

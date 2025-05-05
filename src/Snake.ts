@@ -58,11 +58,24 @@ export default class Snake {
   
 
     
+    public move(): void {
+      const x = this.currentPosition.x;
+      const y = this.currentPosition.y;
   
-    move(): void {
-      for (let i = this.parts.length - 1; i > 0; i--) {
-        this.parts[i] = this.parts[i - 1];
+      if (this.currentDirection === "up") {
+        this.currentPosition = new Point(x, y - 1);
+      } else if (this.currentDirection === "down") {
+        this.currentPosition = new Point(x, y + 1);
+      } else if (this.currentDirection === "left") {
+        this.currentPosition = new Point(x - 1, y);
+      } else if (this.currentDirection === "right") {
+        this.currentPosition = new Point(x + 1, y);
       }
+    for (let i = this.parts.length - 1; i > 0; i--) {
+        this.parts[i] = this.parts[i - 1];
+    
+    }
+  
      
     const head = this.parts[0];
     let newHead: Point;
