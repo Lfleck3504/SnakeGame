@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import "./utils/Point";
 import  WorldModel from "./models/WorldModel";
 import  CanvasWorldView  from "./CanvasWorldView";
 import  Snake  from "./models/Snake";
@@ -8,19 +7,19 @@ import  Food  from "./models/Food";
 import  Point  from "./utils/Point";
 import  ActorCollisionHandlers  from "./collision/ActorCollisionHandlers";
 import  SnakeFoodCollisionHandler  from "./collision/FoodCHandler";
-import  SnakeSnakeCollisionHandler  from "./collision/SnakeCollisionHandler";
+import  SnakeCollisionHandler  from "./collision/SnakeCollisionHandler";
 import SnakeController from "./SnakeController";
 import HumanPlayer from "./HumanPlayer";
 import LRKeyInputHandler from "./LRKeyInputHandler";
 import GameController from "./GameController";
-
+import AvoidWallsPlayer from "./AvoidWallsPlayer";
 
 export default function App() {
   useEffect(() => {
     // 1. Create the collision handler registry
     const aca = new ActorCollisionHandlers();
     aca.addCollisionAction("snake", "food", new SnakeFoodCollisionHandler());
-    aca.addCollisionAction("snake", "snake", new SnakeSnakeCollisionHandler());
+    aca.addCollisionAction("snake", "snake", new SnakeCollisionHandler());
 
     // 2. Create the world model
     const world = new WorldModel(aca);
@@ -42,17 +41,19 @@ export default function App() {
     world.addActor(food2);
 
     // 6. Controller setup
-    const snakeController = new SnakeController(world,snake1);
+    const snake1Controller = new SnakeController(world,snake1);
     const inputHandler = new LRKeyInputHandler();
-    const humanPlayer = new HumanPlayer(snakeController, inputHandler);
+    const humanPlayer = new HumanPlayer(snake1Controller, inputHandler);
 
     const game = new GameController(world);
     game.setPlayer1(humanPlayer);
 
+// 7. AI/avoid walls
+    const snake2Controller = new SnakeController(world, snake2);
+    const avoidWallsAI = new AvoidWallsPlayer(snake2Controller);
+    game.setPlayer2(avoidWallsAI);
 
-
-
-    // 7. Start the game loop
+    // 8. Start the game loop
     function gameLoop() {
       world.update(1);
       requestAnimationFrame(gameLoop);

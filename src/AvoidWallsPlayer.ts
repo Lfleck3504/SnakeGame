@@ -1,7 +1,7 @@
 import Player from "./Player";
 import SnakeController from "./SnakeController";
 
-class AvoidWallsPlayer extends Player {
+export default class AvoidWallsPlayer extends Player {
   constructor(controller: SnakeController) {
     super(controller);
   }
@@ -9,40 +9,21 @@ class AvoidWallsPlayer extends Player {
   makeTurn(): void {
     const pos = this.controller.snakePosition;
     const dir = this.controller.snakeDirection;
-    const w = this.controller.worldWidth;
-    const h = this.controller.worldHeight;
+    const width = this.controller.worldWidth;
+    const height = this.controller.worldHeight;
 
-    const atLeftWall = pos.x === 1;
-    const atRightWall = pos.x === w - 1;
-    const atTopWall = pos.y === 1;
-    const atBottomWall = pos.y === h - 1;
+    const inTopHalf = pos.y <= height / 2;
+    const inLeftHalf = pos.x <= width / 2;
 
-    if (dir === "left" && atLeftWall) {
-      if (pos.y <= h / 2) {
-        this.controller.turnSnakeRight();
-      } else {
-        this.controller.turnSnakeLeft();
-      }
-    } else if (dir === "right" && atRightWall) {
-      if (pos.y <= h / 2) {
-        this.controller.turnSnakeLeft();
-      } else {
-        this.controller.turnSnakeRight();
-      }
-    } else if (dir === "up" && atTopWall) {
-      if (pos.x <= w / 2) {
-        this.controller.turnSnakeRight();
-      } else {
-        this.controller.turnSnakeLeft();
-      }
-    } else if (dir === "down" && atBottomWall) {
-      if (pos.x <= w / 2) {
-        this.controller.turnSnakeLeft();
-      } else {
-        this.controller.turnSnakeRight();
-      }
+
+  if (dir === "left" && pos.x === 0) {
+      inTopHalf ? this.controller.turnSnakeRight() : this.controller.turnSnakeLeft();
+    } else if (dir === "right" && pos.x === width - 1) {
+      inTopHalf ? this.controller.turnSnakeLeft() : this.controller.turnSnakeRight();
+    } else if (dir === "up" && pos.y === 0) {
+      inLeftHalf ? this.controller.turnSnakeRight() : this.controller.turnSnakeLeft();
+    } else if (dir === "down" && pos.y === height - 1) {
+      inLeftHalf ? this.controller.turnSnakeLeft() : this.controller.turnSnakeRight();
     }
   }
 }
-
-export default AvoidWallsPlayer;

@@ -1,4 +1,4 @@
-import  IInputHandler  from "./interfaces/IInputHandler.js";
+import  IInputHandler  from "./interfaces/IInputHandler";
 
 export default class LRKeyInputHandler implements IInputHandler {
   private left = false;

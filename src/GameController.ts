@@ -31,7 +31,7 @@ export default class GameController {
       }
 
       // 3. Update the world at a fixed interval (e.g., every 250 ms)
-      if (currentTime - this.lastTime >= 250) {
+      if (currentTime - this.lastTime >= 10000) {
         this.world.update(1);
         this.lastTime = currentTime;
       }

@@ -1,7 +1,7 @@
 import  WorldModel  from "./models/WorldModel";
 import Snake from "./models/Snake";
 
-class SnakeController {
+export default class SnakeController {
   private snakeWorld: WorldModel;
   private slitherer: Snake;
 
@@ -35,4 +35,3 @@ class SnakeController {
   }
 }
 
-export default SnakeController;

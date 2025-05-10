@@ -9,8 +9,8 @@ export default class WorldModel {
   private allActors: IActor[] = [];
   private allViews: IWorldView[] = [];
   private collisionHandlers: ActorCollisionHandlers;
-  public width: number = 20;
-  public height: number = 20;
+  public width: number = 30;
+  public height: number = 30;
 
   constructor(collisionHandlers: ActorCollisionHandlers) {
     this.collisionHandlers = collisionHandlers;
