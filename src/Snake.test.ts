@@ -1,5 +1,5 @@
-import Snake from "./Snake";
-import Point from "./Point";
+import Snake from "./models/Snake";
+import Point from "./utils/Point";
 
 const moveSnakes = (times: number, turn: boolean = false) => {
   const greenSnake = new Snake(new Point(5, 5), 3);

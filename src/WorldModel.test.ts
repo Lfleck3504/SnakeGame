@@ -1,6 +1,6 @@
-import Snake from "./Snake";
-import WorldModel from "./WorldModel";
-import Point from "./Point";
+import Snake from "./models/Snake";
+import  WorldModel  from "./models/WorldModel";
+import Point from "./utils/Point";
 describe("WorldModel Tests", () => {
   it("moves snake forward with update", () => {
     const snake = new Snake(new Point(5, 5), 3);

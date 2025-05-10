@@ -1,5 +1,5 @@
 import WorldModel from "./WorldModel";
-import Snake from "./Snake";
+import Snake from "./models/Snake";
 
 class SnakeController {
   private snakeWorld: WorldModel;
