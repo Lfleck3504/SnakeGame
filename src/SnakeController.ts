@@ -1,5 +1,6 @@
 import  WorldModel  from "./models/WorldModel";
 import Snake from "./models/Snake";
+import  Point  from "./utils/Point";
 
 export default class SnakeController {
   private snakeWorld: WorldModel;
@@ -20,6 +21,10 @@ export default class SnakeController {
 
   get snakePosition() {
     return this.slitherer.position;
+  }
+
+  get snakeParts(): Point[] {
+    return this.slitherer.parts;
   }
 
   get snakeDirection() {

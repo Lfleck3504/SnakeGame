@@ -1,7 +1,7 @@
-import Snake from "./models/Snake";
-import WorldModel from "./models/WorldModel";
-import Point from "./utils/Point";
-import  ActorCollisionHandlers  from "./collision/ActorCollisionHandlers";
+import Snake from "../models/Snake";
+import WorldModel from "../models/WorldModel";
+import Point from "../utils/Point";
+import  ActorCollisionHandlers  from "../collision/ActorCollisionHandlers";
 
 describe("WorldModel Tests", () => {
   it("moves snake forward with update", () => {
