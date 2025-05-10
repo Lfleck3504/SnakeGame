@@ -8,5 +8,8 @@ export default abstract class Player {
   }
 
   abstract makeTurn(): void;
+  isActive(): boolean {
+    return this.controller.isSnakeActive;
+  }
 }
 

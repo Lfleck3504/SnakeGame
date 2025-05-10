@@ -10,7 +10,9 @@ export default class SnakeController {
     this.snakeWorld = world;
     this.slitherer = snake;
   }
-
+  get isSnakeActive(): boolean {
+    return this.slitherer.isActive;
+  }
   turnSnakeLeft(): void {
     this.slitherer.turnLeft();
   }

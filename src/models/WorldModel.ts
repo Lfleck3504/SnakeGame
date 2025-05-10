@@ -55,7 +55,26 @@ export default class WorldModel {
         return !(isCollidable(actor) && !actor.isActive);
       });
     }
+    // Filter out dead collidable actors
+this.allActors = this.allActors.filter(actor => {
+  return !(isCollidable(actor) && !actor.isActive);
+});
 
-    this.allViews.forEach(view => view.display(this));
-  }
+// Check if we need to spawn food
+const foodLeft = this.allActors.filter(a => a.type === "food" && a.isActive).length;
+if (foodLeft === 0) {
+  const randX = Math.floor(Math.random() * this.width);
+  const randY = Math.floor(Math.random() * this.height);
+  const Food = require("../models/Food").default;
+  this.addActor(new Food(randX, randY));
+}
+
+  this.allViews.forEach(view => view.display(this));
+}
+reset(): void {
+  this.allViews.forEach(view => view.dispose()); // Clean up views
+  this.allViews = [];
+  this.allActors = [];
+}
+
 }

@@ -46,4 +46,7 @@ export default class CanvasWorldView implements IWorldView {
       result = iter.next();
     }
   }
+  dispose(): void {
+    document.body.removeChild(this.canvas);
+  }
 }
