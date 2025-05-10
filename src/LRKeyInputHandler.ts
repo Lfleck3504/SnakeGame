@@ -1,32 +1,29 @@
-import { IInputHandler } from "./IInputHandler.js";
+import  IInputHandler  from "./interfaces/IInputHandler.js";
 
-export class LRKeyInputHandler implements IInputHandler {
-  private wasLeftArrowPushed: boolean = false;
-  private wasRightArrowPushed: boolean = false;
+export default class LRKeyInputHandler implements IInputHandler {
+  private left = false;
+  private right = false;
 
   constructor() {
-    window.addEventListener("keydown", (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        this.wasLeftArrowPushed = true;
-      } else if (event.key === "ArrowRight") {
-        this.wasRightArrowPushed = true;
-      }
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") this.left = true;
+      if (e.key === "ArrowRight") this.right = true;
     });
   }
 
   madeLeftMove(): boolean {
-    return this.wasLeftArrowPushed;//  "left arrow" key press
+    return this.left;
   }
 
   madeRightMove(): boolean {
-    return this.wasRightArrowPushed;//  "right arrow" key press
+    return this.right;
   }
 
   resetLeftMove(): void {
-    this.wasLeftArrowPushed = false;//  "left arrow" key press ending
+    this.left = false;
   }
 
   resetRightMove(): void {
-    this.wasRightArrowPushed = false;// "right arrow" key press ending
+    this.right = false;
   }
 }

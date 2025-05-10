@@ -1,5 +1,5 @@
 import Snake from "../models/Snake";
-import  ICollisionHandler  from "./ICollisionHandler";
+import  ICollisionHandler  from "../collision/ICollisionHandler";
 
 
 export default class SnakeSnakeCollisionHandler implements ICollisionHandler {

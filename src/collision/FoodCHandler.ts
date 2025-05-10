@@ -1,4 +1,4 @@
-import  ICollisionHandler from "./ICollisionHandler";
+import  ICollisionHandler  from "../collision/ICollisionHandler";
 import Snake from "../models/Snake";
 import Food from "../models/Food";
 

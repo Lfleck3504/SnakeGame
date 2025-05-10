@@ -1,8 +1,8 @@
 import  Player  from "./Player";
-import  {IInputHandler}  from "./IInputHandler";
+import  IInputHandler  from "./interfaces/IInputHandler";
 import  SnakeController  from "./SnakeController";
 
-export class HumanPlayer extends Player {
+export default class HumanPlayer extends Player {
   private input: IInputHandler;
 
   constructor(controller: SnakeController, inputHandler: IInputHandler) {

@@ -1,4 +1,4 @@
-import  ICollisionHandler  from "./ICollisionHandler";
+import  ICollisionHandler  from "../collision/ICollisionHandler";
 
 export default class ActorCollisionHandlers {
   private pairs: Map<string, ICollisionHandler> = new Map();
