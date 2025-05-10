@@ -9,6 +9,11 @@ import  Point  from "./utils/Point";
 import  ActorCollisionHandlers  from "./collision/ActorCollisionHandlers";
 import  SnakeFoodCollisionHandler  from "./collision/FoodCHandler";
 import  SnakeSnakeCollisionHandler  from "./collision/SnakeCollisionHandler";
+import SnakeController from "./SnakeController";
+import HumanPlayer from "./HumanPlayer";
+import LRKeyInputHandler from "./LRKeyInputHandler";
+import GameController from "./GameController";
+
 
 export default function App() {
   useEffect(() => {
@@ -36,7 +41,18 @@ export default function App() {
     world.addActor(food1);
     world.addActor(food2);
 
-    // 6. Start the game loop
+    // 6. Controller setup
+    const snakeController = new SnakeController(world,snake1);
+    const inputHandler = new LRKeyInputHandler();
+    const humanPlayer = new HumanPlayer(snakeController, inputHandler);
+
+    const game = new GameController(world);
+    game.setPlayer1(humanPlayer);
+
+
+
+
+    // 7. Start the game loop
     function gameLoop() {
       world.update(1);
       requestAnimationFrame(gameLoop);
@@ -48,7 +64,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Snake Game Running</h1>
-      <p>The canvas is created dynamically and appended to the document.</p>
+      <p>Use Left/Right arrow keys to turn Also hi proffesor</p>
     </div>
   );
 }

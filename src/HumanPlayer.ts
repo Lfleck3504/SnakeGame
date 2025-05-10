@@ -12,10 +12,10 @@ export default class HumanPlayer extends Player {
 
   makeTurn(): void {
     if (this.input.madeLeftMove()) {
-      this.sc.turnSnakeLeft();
+      this.controller.turnSnakeLeft();
       this.input.resetLeftMove();
     } else if (this.input.madeRightMove()) {
-      this.sc.turnSnakeRight();
+      this.controller.turnSnakeRight();
       this.input.resetRightMove();
     }
   }

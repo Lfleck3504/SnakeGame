@@ -7,10 +7,10 @@ class AvoidWallsPlayer extends Player {
   }
 
   makeTurn(): void {
-    const pos = this.sc.snakePosition;
-    const dir = this.sc.snakeDirection;
-    const w = this.sc.worldWidth;
-    const h = this.sc.worldHeight;
+    const pos = this.controller.snakePosition;
+    const dir = this.controller.snakeDirection;
+    const w = this.controller.worldWidth;
+    const h = this.controller.worldHeight;
 
     const atLeftWall = pos.x === 1;
     const atRightWall = pos.x === w - 1;
@@ -19,27 +19,27 @@ class AvoidWallsPlayer extends Player {
 
     if (dir === "left" && atLeftWall) {
       if (pos.y <= h / 2) {
-        this.sc.turnSnakeRight();
+        this.controller.turnSnakeRight();
       } else {
-        this.sc.turnSnakeLeft();
+        this.controller.turnSnakeLeft();
       }
     } else if (dir === "right" && atRightWall) {
       if (pos.y <= h / 2) {
-        this.sc.turnSnakeLeft();
+        this.controller.turnSnakeLeft();
       } else {
-        this.sc.turnSnakeRight();
+        this.controller.turnSnakeRight();
       }
     } else if (dir === "up" && atTopWall) {
       if (pos.x <= w / 2) {
-        this.sc.turnSnakeRight();
+        this.controller.turnSnakeRight();
       } else {
-        this.sc.turnSnakeLeft();
+        this.controller.turnSnakeLeft();
       }
     } else if (dir === "down" && atBottomWall) {
       if (pos.x <= w / 2) {
-        this.sc.turnSnakeLeft();
+        this.controller.turnSnakeLeft();
       } else {
-        this.sc.turnSnakeRight();
+        this.controller.turnSnakeRight();
       }
     }
   }

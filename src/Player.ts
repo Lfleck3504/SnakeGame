@@ -1,13 +1,12 @@
 import SnakeController from "./SnakeController";
 
-abstract class Player {
-  protected sc: SnakeController;
+export default abstract class Player {
+  protected controller: SnakeController;
 
   constructor(controller: SnakeController) {
-    this.sc = controller;
+    this.controller = controller;
   }
 
   abstract makeTurn(): void;
 }
 
-export default Player;
