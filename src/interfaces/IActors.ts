@@ -1,4 +1,4 @@
-export interface IActor {
+export default interface IActor {
     update(): void;
     readonly type: string; 
   }

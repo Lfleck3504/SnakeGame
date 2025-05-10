@@ -1,11 +1,11 @@
-import { IActor } from "../interfaces/IActors";
-import { IWorldView } from "../interfaces/IWorldView";
-import { ICollidable } from "../interfaces/ICollidable";
-import { ActorCollisionHandlers } from "../collision/ActorCollisionHandlers";
-import { isCollidable } from "../utils/typeGuard";
-import { ArrayIterator } from "../utils/ArrayIterator";
+import  IActor  from "../interfaces/IActors";
+import  IWorldView  from "../interfaces/IWorldView";
+import  ICollidable  from "../interfaces/ICollidable";
+import  ActorCollisionHandlers  from "../collision/ActorCollisionHandlers";
+import  {isCollidable}  from "../utils/typeGuard";
+import  ArrayIterator  from "../utils/ArrayIterator";
 
-export class WorldModel {
+export default class WorldModel {
   private allActors: IActor[] = [];
   private allViews: IWorldView[] = [];
   private collisionHandlers: ActorCollisionHandlers;

@@ -1,4 +1,4 @@
-import WorldModel from "./WorldModel";
+import  WorldModel  from "./models/WorldModel";
 import Snake from "./models/Snake";
 
 class SnakeController {
@@ -23,7 +23,7 @@ class SnakeController {
   }
 
   get snakeDirection() {
-    return this.slitherer.Direction;
+    return this.slitherer.direction;
   }
 
   get worldWidth() {

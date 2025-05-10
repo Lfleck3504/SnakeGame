@@ -1,6 +1,6 @@
-import { IActor } from "./IActors";
+import  IActor  from "./IActors";
 
-export interface ICollidable extends IActor {
+export default interface ICollidable extends IActor {
   didCollide(actor: IActor): boolean;
   isActive: boolean;
   type: string;

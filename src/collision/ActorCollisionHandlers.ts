@@ -1,6 +1,6 @@
-import { ICollisionHandler } from "./ICollisionHandler";
+import  ICollisionHandler  from "./ICollisionHandler";
 
-export class ActorCollisionHandlers {
+export default class ActorCollisionHandlers {
   private pairs: Map<string, ICollisionHandler> = new Map();
 
   private toKey(colliderType: string, collidedType: string): string {

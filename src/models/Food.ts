@@ -1,7 +1,7 @@
 import  Point  from "../utils/Point";
-import  {IActor}  from "../interfaces/IActors";
+import  IActor  from "../interfaces/IActors";
 
-export class Food implements IActor {
+export default class Food implements IActor {
   private currentPosition: Point;
   private isCurrentlyActive: boolean;
 

@@ -1,7 +1,7 @@
-import { IActor } from "../interfaces/IActors";
-import { ICollidable } from "../interfaces/ICollidable";
-import { Snake } from "../models/Snake";
-import { Food } from "../models/Food";
+import  IActor  from "../interfaces/IActors";
+import  ICollidable  from "../interfaces/ICollidable";
+import  Snake  from "../models/Snake";
+import  Food  from "../models/Food";
 
 export function isCollidable(actor: IActor): actor is ICollidable {
     return "didCollide" in actor && "type" in actor && "isActive" in actor;

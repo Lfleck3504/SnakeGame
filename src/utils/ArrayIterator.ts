@@ -1,4 +1,4 @@
-export class ArrayIterator<T> {
+export default class ArrayIterator<T> {
   private index: number = 0;
   constructor(private arr: T[]) {}
 
