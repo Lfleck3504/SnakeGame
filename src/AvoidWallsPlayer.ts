@@ -15,8 +15,10 @@ export default class AvoidWallsPlayer extends Player {
     const inTopHalf = pos.y <= height / 2;
     const inLeftHalf = pos.x <= width / 2;
 
+    // Debugging
+    console.log("AI at", pos, "facing", dir);
 
-  if (dir === "left" && pos.x === 0) {
+    if (dir === "left" && pos.x === 0) {
       inTopHalf ? this.controller.turnSnakeRight() : this.controller.turnSnakeLeft();
     } else if (dir === "right" && pos.x === width - 1) {
       inTopHalf ? this.controller.turnSnakeLeft() : this.controller.turnSnakeRight();
@@ -25,5 +27,7 @@ export default class AvoidWallsPlayer extends Player {
     } else if (dir === "down" && pos.y === height - 1) {
       inLeftHalf ? this.controller.turnSnakeLeft() : this.controller.turnSnakeRight();
     }
+
+    // Optional improvement: add wall proximity check or randomize turns
   }
 }

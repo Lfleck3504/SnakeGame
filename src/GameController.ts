@@ -5,7 +5,8 @@ export default class GameController {
   private world: WorldModel;
   private player1: Player | null = null;
   private player2: Player | null = null;
-  private lastTime: number | null = null; //
+  private readonly tickInterval: number = 300; 
+  private lastTime: number | null = null;
 
   constructor(world: WorldModel) {
     this.world = world;
@@ -19,27 +20,28 @@ export default class GameController {
     this.player2 = player;
   }
 
+
+ 
+  
   run() {
     const updateFrame = (currentTime: number) => {
-      // 1. Let each player decide a move
-      if (this.player1) this.player1.makeTurn();
-      if (this.player2) this.player2.makeTurn();
-
-      // 2. On first frame, initialize the clock
       if (this.lastTime === null) {
         this.lastTime = currentTime;
       }
-
-      // 3. Update the world at a fixed interval (e.g., every 250 ms)
-      if (currentTime - this.lastTime >= 10000) {
+  
+      // Player turns
+      this.player1?.makeTurn();
+      this.player2?.makeTurn();
+  
+      // World updates every 500ms
+      if (currentTime - this.lastTime >= this.tickInterval) {
         this.world.update(1);
         this.lastTime = currentTime;
       }
-
-      // 4. Keep looping
+  //loooooop
       requestAnimationFrame(updateFrame);
     };
-
+  
     requestAnimationFrame(updateFrame);
   }
 }

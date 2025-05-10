@@ -5,6 +5,7 @@ import  CanvasWorldView  from "./CanvasWorldView";
 import  Snake  from "./models/Snake";
 import  Food  from "./models/Food";
 import  Point  from "./utils/Point";
+import  Player  from "./Player";
 import  ActorCollisionHandlers  from "./collision/ActorCollisionHandlers";
 import  SnakeFoodCollisionHandler  from "./collision/FoodCHandler";
 import  SnakeCollisionHandler  from "./collision/SnakeCollisionHandler";
@@ -23,6 +24,8 @@ export default function App() {
 
     // 2. Create the world model
     const world = new WorldModel(aca);
+    world.width = 30;
+    world.height = 30;
 
     // 3. Add views
     const view = new CanvasWorldView(20);
@@ -41,26 +44,22 @@ export default function App() {
     world.addActor(food2);
 
     // 6. Controller setup
-    const snake1Controller = new SnakeController(world,snake1);
+    const controller1 = new SnakeController(world, snake1);
     const inputHandler = new LRKeyInputHandler();
-    const humanPlayer = new HumanPlayer(snake1Controller, inputHandler);
-
-    const game = new GameController(world);
-    game.setPlayer1(humanPlayer);
+    const humanPlayer = new HumanPlayer(controller1, inputHandler);
 
 // 7. AI/avoid walls
-    const snake2Controller = new SnakeController(world, snake2);
-    const avoidWallsAI = new AvoidWallsPlayer(snake2Controller);
-    game.setPlayer2(avoidWallsAI);
 
-    // 8. Start the game loop
-    function gameLoop() {
-      world.update(1);
-      requestAnimationFrame(gameLoop);
-    }
-
-    gameLoop();
+    const controller2 = new SnakeController(world, snake2);
+    const autoPlayer = new AvoidWallsPlayer(controller2);
+   
+    // 7. Game controller
+    const game = new GameController(world);
+    game.setPlayer1(humanPlayer);
+    game.setPlayer2(autoPlayer);
+    game.run(); // ✅ only one game loop
   }, []);
+
 
   return (
     <div className="App">
